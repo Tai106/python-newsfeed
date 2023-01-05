@@ -1,6 +1,6 @@
 import sys
 from flask import Blueprint, request, jsonify, session
-from app.models import User
+from app.models import User, Post, Comment, Vote
 from app.db import get_db
 
 bp = Blueprint('api', __name__, url_prefix='/api')
@@ -63,3 +63,9 @@ def login():
   session['loggedIn'] = True
 
   return jsonify(id = user.id)
+
+
+@bp.route('/comments', methods=['POST'])
+def comment():
+  data = request.get_json()
+  db = get_db()
