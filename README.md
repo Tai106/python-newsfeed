@@ -1,1 +1,1 @@
-# python-newsfeed
+# pychat-news
